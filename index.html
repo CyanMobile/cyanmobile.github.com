@@ -425,9 +425,110 @@ It can be used without any need to have any Google applications installed.</p>
 <li>Commtiva z71: ardX</li>
 <li><a href="http://forum.xda-developers.com/showthread.php?t=1910837">Motorola Photon : thekraven </a></li>
 <li><a href="http://forum.xda-developers.com/showthread.php?t=1532921">ZTE Blade: Squadzone </a></li>
-</ul><h1>These Were they officially supported devices !</h1>
+</ul><h1>These Were the officially supported devices !</h1>
 
-<p>If your device is not listed here and you want CyanMobile working on your phone ! you could ask your device developer check here <a href="https://github.com/CyanMobile/android_cyanmobile">https://github.com/CyanMobile/android_cyanmobile</a> ! we have given instructions to port CyanMobile to your device :) </p>
+<h2><strong>CyanMobileX Team:</strong></h2>
+
+<ul>
+<li>Squadzone</li>
+<li>EmoBoiix3</li>
+<li>Phiexz </li>
+<li>OldDroid</li>
+<li>Tj-style </li>
+<li>Speed_bot</li>
+<li>Psyke83 </li>
+<li>WillingMagic</li>
+<li>Motafoca</li>
+<li>TaichiN</li>
+<li>island3r</li>
+<li>Keyur2Maru</li>
+<li>ardX</li>
+<li>thekraven</li>
+<li>ezeteze</li>
+</ul><h1></h1>
+
+<p>**If your device is not listed you could even compile CyanMobile for your device! **</p>
+
+<h2>Here is the Guide to Port CyanMobile to new device</h2>
+
+<h2>Getting Started</h2>
+
+<p>To get started with Android/CyanMobile, you'll need to get
+familiar with <a href="http://source.android.com/download/using-repo">Git and Repo</a>.</p>
+
+<p>To initialize your local repository using the CyanMobile tree, use a command like this:</p>
+
+<pre><code>repo init -u git://github.com/CyanMobile/android_cyanmobile.git -b gingerbread
+</code></pre>
+
+<p>Then to sync up:</p>
+
+<pre><code>repo sync
+</code></pre>
+
+<p>For more information on this Github Organization and what features are included in it, 
+please <a href="https://github.com/CyanMobile/android_cyanmobile/blob/gingerbread/Definitions.txt">Read the Definitions</a></p>
+
+<h2>Building CyanMobile rom for your device</h2>
+
+<p>Add the Following two lines into the init.rc or init.{DEVICE}.rc of your Device Config</p>
+
+<p></p><ol>
+<li>setprop ro.squadzone.build 1</li>
+<li>setprop persist.sys.gmaps_hack 1</li>
+
+<p>Now Add These Lines to your System.prop { Build.prop }</p>
+
+<hr>
+</ol><ul>
+<li>debug.composition.type=gpu</li>
+
+<li>persist.sys.composition.type=gpu</li>
+
+<li>persist.sys.ui.hw=true</li>
+
+<li>dalvik.vm.lockprof.threshold=500</li>
+
+<li>dalvik.vm.dexopt-flags=m=y</li>
+
+<li>dalvik.vm.heapsize=32m</li>
+
+<li>dalvik.vm.execution-mode=int:jit</li>
+
+<li>dalvik.vm.dexopt-data-only=1</li>
+
+<li>ro.config.hw_menu_unlockscreen=false</li>
+
+<li>ro.service.swiqi.supported=true</li>
+
+<li>debug.sf.hw=1</li>
+</ul><hr><p>"Make sure your device's kernel supports :</p>
+
+<ul>
+<li>KSM</li>
+<li>Cleancache</li>
+<li>Frontswap</li>
+</ul><p>And Your Kernel Should Also Support all Six I/O Schedulers For Get All Functions Working Fine i.e :</p>
+
+<ul>
+<li>Deadline</li>
+<li>NOOP</li>
+<li>SIO</li>
+<li>BFQ</li>
+<li>CFQ</li>
+<li>VR</li> 
+</ul><p>See device/samsung/tass and vendor/cyanogen/products for preparation of what's needed to build a full ROM and make it for your device....</p>
+
+<p>Extra Notes : Your overlay must be the same with this Example Device </p>
+
+<ul>
+<li>If your device is [ldpi], see device/samsung/tass/overlay</li>
+<li>Else if your device is [mdpi], see device/samsung/gio/overlay</li>
+<li>Else if your device is [hdpi], see device/zte/blade/overlay</li>
+</ul><p>And if you need to add another xml into overlay,Make sure the default overlay is untouched :)
+If you still can't manage to build, let me help you, Just Make Issue and Tag us ! Or Hang With us on Our Official Freenode Channel on <a href="http://webchat.freenode.net/?channels=CyanMobileX">#CyanMobileX</a></p>
+
+<h2>DO NOT USE recovery.img AFTER BUILDING THIS ;)</h2>
       </section>
     </div>
 
